@@ -1,0 +1,4 @@
+@{ ViewData["Title"] = "Hồ sơ cá nhân"; }
+<section class="page-hero"><div class="container-wide"><div class="eyebrow eyebrow-muted"><span class="eyebrow-line"></span> MY PROFILE</div><h1>Thông tin <em>của bạn.</em></h1><p>Cập nhật liên hệ để chúng tôi phục vụ bạn chu đáo hơn.</p></div></section>
+<section class="container-wide section profile-wrap"><form id="profileForm" class="profile-form"><div class="form-grid"><label>Họ và tên<input id="profileName" required maxlength="100" /></label><label>Số điện thoại<input id="profilePhone" required maxlength="20" /></label><label>Email<input id="profileEmail" type="email" maxlength="100" required /></label><label>Số giấy tờ<input id="profileIdNumber" maxlength="20" /></label><label>Tên đăng nhập<input id="profileUsername" disabled /></label></div><button type="submit" class="button button-dark">Lưu thay đổi ↗</button></form></section>
+@section Scripts { <script src="~/js/profile.js" asp-append-version="true"></script> }

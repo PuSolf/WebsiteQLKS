@@ -1,0 +1,18 @@
+@model LoginViewModel
+@{ ViewData["Title"] = "Đăng nhập"; }
+<section class="auth-page container-wide">
+    <div class="auth-art">
+        <div class="auth-art-mark">S</div>
+        <p class="eyebrow">WELCOME BACK</p>
+        <h1>Không gian<br />của bạn đang chờ.</h1>
+        <p>Đăng nhập để quản lý kỳ nghỉ và booking của bạn.</p>
+    </div>
+    <div class="auth-card">
+        <a asp-controller="Home" asp-action="Index" class="back-link">← Về trang chủ</a>
+        <h2>Đăng nhập</h2>
+        <p class="muted">Tiếp tục hành trình của bạn.</p>
+
+@if (TempData["Success"] is string success) { <div class="alert alert-success">@success</div> }
+<div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+<form asp-action="Login" method="post" class="stack-form"><input asp-for="ReturnUrl" type="hidden" /><label>Tên đăng nhập hoặc email<input asp-for="UsernameOrEmail" autocomplete="username" placeholder="Tên đăng nhập / email" /></label><span asp-validation-for="UsernameOrEmail" class="field-error"></span><label>Mật khẩu<input asp-for="Password" autocomplete="current-password" placeholder="Nhập mật khẩu" /></label><span asp-validation-for="Password" class="field-error"></span><button type="submit" class="button button-dark button-full">Đăng nhập <span>↗</span></button></form><p class="auth-switch">Chưa có tài khoản? <a asp-action="Register">Tạo tài khoản</a></p></div></section>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

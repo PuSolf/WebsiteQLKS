@@ -1,0 +1,3 @@
+@model ErrorViewModel
+@{ ViewData["Title"] = "Đã xảy ra lỗi"; }
+<section class="empty-page container-wide"><span class="empty-symbol">!</span><h1>Đã có lỗi xảy ra.</h1><p>Hệ thống đã ghi nhận sự cố. Vui lòng thử lại sau.</p>@if (Model.ShowRequestId) { <p class="muted">Mã yêu cầu: <code>@Model.RequestId</code></p> }<a asp-controller="Home" asp-action="Index" class="button button-dark">Về trang chủ</a></section>

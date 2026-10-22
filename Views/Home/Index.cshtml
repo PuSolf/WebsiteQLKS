@@ -1,0 +1,48 @@
+@{
+    ViewData["Title"] = "Kỳ nghỉ của riêng bạn";
+    var hotel = ViewBag.Hotel as HotelInfo;
+    var roomTypes = ViewBag.RoomTypes as List<RoomType> ?? new List<RoomType>();
+    var signedInCustomer = User.Identity?.IsAuthenticated == true && User.IsInRole("Customer");
+}
+<section class="hero">
+    <div class="hero-glow hero-glow-one"></div><div class="hero-glow hero-glow-two"></div>
+    <div class="container-wide hero-grid">
+        <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-line"></span> Bạn cần chỗ nghỉ ngơi</div>
+            <h1>Sang trọng<br /><em>hảo hạng</em> đẳng cấp.</h1>
+            <p>Không gian tinh tế, dịch vụ chu đáo và những khoảnh khắc chậm rãi dành riêng cho bạn.</p>
+            <div class="hero-cta"><a href="#rooms" class="button button-gold">Xem phòng ngay <span aria-hidden="true">↗</span></a><span class="hero-note"><span class="tiny-star">✦</span> Trải nghiệm nghỉ dưỡng chọn lọc</span></div>
+        </div>
+        <div class="hero-art" aria-label="Không gian phòng khách sạn sang trọng" role="img">
+            <img src="~/img/anhkhachsan.jpg" alt="Khách sạn sang trọng" class="hero-img" />
+            <div class="art-caption"><span>01 / STAY WELL</span><b>Quiet luxury, everyday.</b></div>
+        </div>
+    </div>
+    <div class="hero-bottom container-wide"><span>HÀ NỘI, VIỆT NAM</span><span class="scroll-cue">CUỘN ĐỂ KHÁM PHÁ <i>↓</i></span><span>BTL. Nhom10</span></div>
+</section>
+<section class="booking-search-wrap container-wide" aria-label="Tìm phòng trống">
+    <form class="booking-search" id="roomSearchForm">
+        <label class="search-field"><span>NHẬN PHÒNG</span><input type="date" id="checkIn" name="checkIn" required /></label>
+        <label class="search-field"><span>TRẢ PHÒNG</span><input type="date" id="checkOut" name="checkOut" required /></label>
+        <label class="search-field"><span>LOẠI PHÒNG</span><select id="roomTypeId" name="roomTypeId"><option value="">Tất cả hạng phòng</option>@foreach (var type in roomTypes) { <option value="@type.RoomTypeId">@type.Ten</option> }</select></label>
+        <label class="search-field search-guests"><span>SỐ KHÁCH</span><select id="guests" name="guests"><option value="1">1 khách</option><option value="2" selected>2 khách</option><option value="3">3 khách</option><option value="4">4 khách</option><option value="5">5 khách</option></select></label>
+        <button class="button button-dark search-submit" type="submit"><span>Tìm phòng</span><b aria-hidden="true">↗</b></button>
+    </form>
+</section>
+<section class="section container-wide" id="rooms">
+    <div class="section-head">
+        <div><div class="eyebrow eyebrow-muted"><span class="eyebrow-line"></span> KHÔNG GIAN DÀNH CHO BẠN</div><h2>Chọn kỳ nghỉ <em>tiếp theo.</em></h2><p>Mỗi căn phòng là một lời mời để sống chậm và tận hưởng.</p></div>
+        <div class="room-tools"><label class="sr-only" for="keyword">Tìm phòng hoặc loại phòng</label><input id="keyword" type="search" placeholder="Tìm phòng, hạng phòng..." /><label class="sr-only" for="sortBy">Sắp xếp giá</label><select id="sortBy"><option value="">Giá đề xuất</option><option value="asc">Giá thấp đến cao</option><option value="desc">Giá cao đến thấp</option></select></div>
+    </div>
+    <div class="filter-row"><span id="resultCount" class="result-count">Đang tải phòng...</span><label class="price-filter">Ngân sách tối đa <input id="maxPrice" type="range" min="500000" max="3000000" step="100000" value="3000000" /><b id="maxPriceLabel">3.000.000 ₫</b></label></div>
+    <div id="roomGrid" class="room-grid" aria-live="polite"><div class="loading-card"><div class="loading-ring"></div><span>Đang tìm không gian phù hợp...</span></div></div>
+    <div class="pagination" id="roomPagination"></div>
+</section>
+<section class="experience-band">
+    <div class="container-wide experience-grid">
+        <div><span class="eyebrow"><span class="eyebrow-line"></span> THE SUNRISE DIFFERENCE</span><h2>Ít ồn ào hơn.<br /><em>Nhiều cảm xúc hơn.</em></h2></div>
+        <div class="experience-list"><article><span>01</span><div><h3>Thiết kế có chủ ý</h3><p>Từng đường nét, chất liệu và ánh sáng đều hướng đến sự thư thái.</p></div></article><article><span>02</span><div><h3>Dịch vụ tận tâm</h3><p>Những chăm chút nhỏ để bạn luôn cảm thấy được chào đón.</p></div></article><article><span>03</span><div><h3>Đặt phòng đơn giản</h3><p>Tìm kiếm, lựa chọn và theo dõi booking trực tuyến một cách thuận tiện.</p></div></article></div>
+    </div>
+</section>
+<div class="modal-backdrop" id="roomModal" hidden><section class="detail-modal" role="dialog" aria-modal="true" aria-labelledby="roomModalTitle"><button class="modal-close" id="closeRoomModal" aria-label="Đóng">×</button><div id="roomModalContent"></div></section></div>
+@section Scripts { <script src="~/js/rooms.js" asp-append-version="true"></script> }

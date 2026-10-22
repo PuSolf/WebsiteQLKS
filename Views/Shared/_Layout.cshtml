@@ -1,0 +1,68 @@
+@using System.Security.Claims
+@{
+    var pageTitle = ViewData["Title"] as string ?? "Sunrise Hotel";
+    var role = User.FindFirstValue(ClaimTypes.Role) ?? "";
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#14221e" />
+    <title>@pageTitle · Sunrise Hotel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <form id="antiForgeryForm" class="d-none" aria-hidden="true">@Html.AntiForgeryToken()</form>
+    <header class="site-header">
+        <div class="header-inner container-wide">
+            <a class="brand" asp-controller="Home" asp-action="Index" aria-label="Sunrise Hotel trang chủ">
+                <span class="brand-mark">S</span><span class="brand-word">SUNRISE <small>HOTEL & RESIDENCE</small></span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Mở menu" aria-expanded="false"><span></span><span></span><span></span></button>
+            <nav class="main-nav" id="mainNav">
+                <a asp-controller="Home" asp-action="Index" class="nav-link">Khám phá</a>
+                @if (User.Identity?.IsAuthenticated == true && role == "Customer")
+                {
+                    <a asp-controller="Home" asp-action="MyBookings" class="nav-link">Đặt phòng của tôi</a>
+                    <a asp-controller="Home" asp-action="Profile" class="nav-link">Hồ sơ</a>
+                }
+                @if (role == "Manager") { <a asp-controller="Management" asp-action="Index" class="nav-link">Quản trị</a> }
+                @if (role == "Receptionist") { <a asp-controller="Management" asp-action="Reception" class="nav-link">Lễ tân</a> }
+                @* <a href="/swagger" class="nav-link nav-api" target="_blank" rel="noopener">API</a> *@
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <span class="nav-user">Xin chào, @User.Identity.Name</span>
+                    <form asp-controller="Account" asp-action="Logout" method="post" class="nav-logout"><button type="submit" class="button button-outline button-small">Đăng xuất</button></form>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login" class="nav-link">Đăng nhập</a>
+                    <a asp-controller="Account" asp-action="Register" class="button button-dark button-small">Tạo mới</a>
+                }
+            </nav>
+        </div>
+    </header>
+    <main>@RenderBody()</main>
+    <footer class="site-footer">
+        <div class="container-wide footer-inner">
+            <div><a class="brand brand-footer" asp-controller="Home" asp-action="Index"><span class="brand-mark">S</span><span class="brand-word">SUNRISE <small>HOTEL & RESIDENCE</small></span></a><p>Nơi sự tinh tế gặp gỡ sự an yên.</p></div>
+            <div class="footer-meta"><span>© @DateTime.Now.Year Sunrise Hotel</span><span>Hà Nội · Việt Nam</span></div>
+        </div>
+    </footer>
+    <div id="toastRegion" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+    <script>
+        window.HMS = {
+            isAuthenticated: @(User.Identity?.IsAuthenticated == true ? "true" : "false"),
+            role: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(role)),
+            requestVerificationToken: document.querySelector('#antiForgeryForm input[name="__RequestVerificationToken"]')?.value || ''
+        };
+    </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

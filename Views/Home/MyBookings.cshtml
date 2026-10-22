@@ -1,0 +1,4 @@
+@{ ViewData["Title"] = "Đặt phòng của tôi"; }
+<section class="page-hero"><div class="container-wide"><div class="eyebrow eyebrow-muted"><span class="eyebrow-line"></span> YOUR STAYS</div><h1>Kỳ nghỉ <em>của bạn.</em></h1><p>Theo dõi trạng thái đặt phòng và các giao dịch thanh toán.</p></div></section>
+<section class="container-wide section bookings-page"><div id="myBookings" class="booking-list"><div class="loading-card"><div class="loading-ring"></div><span>Đang tải đặt phòng...</span></div></div><a asp-controller="Home" asp-action="Index" asp-fragment="rooms" class="button button-dark">Tìm phòng mới ↗</a></section>
+@section Scripts { <script src="~/js/bookings.js" asp-append-version="true"></script> }
