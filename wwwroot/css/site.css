@@ -1226,7 +1226,7 @@ button {
 }
 
 .muted {
-    color: #889188
+    color: #6f7b71
 }
 
 .auth-card > .muted {
@@ -1753,7 +1753,7 @@ button {
 
 .inline-error {
     color: var(--danger);
-    font-size: 12px
+    font-size: 13px
 }
 
 .empty-page {
@@ -2379,4 +2379,451 @@ button {
     .editor-wide {
         grid-column: auto
     }
+}
+
+/* ---------------------------------------------------------
+   Typography & visual refinement
+   Giữ phong cách xanh trầm - kem - vàng nhạt, ưu tiên dễ đọc.
+   --------------------------------------------------------- */
+body {
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+.brand-word {
+    font-size: 14px;
+    letter-spacing: .13em;
+}
+
+    .brand-word small {
+        font-size: 10px;
+        letter-spacing: .18em;
+    }
+
+.main-nav {
+    gap: 23px;
+}
+
+.nav-link,
+.nav-user {
+    font-size: 14px;
+}
+
+.nav-user {
+    color: #53665a;
+    font-weight: 600;
+}
+
+.button {
+    padding: 13px 21px;
+    font-size: 14px;
+    letter-spacing: 0;
+    border-radius: 4px;
+}
+
+.button-small {
+    padding: 10px 14px;
+    font-size: 13px;
+}
+
+.eyebrow {
+    font-size: 11px;
+    letter-spacing: .16em;
+}
+
+.hero-copy > p {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.hero-note {
+    font-size: 13px;
+}
+
+.hero-art {
+    border-radius: 4px;
+    background: #d8d4c8;
+}
+
+.hero-img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+}
+
+.hero-art::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(15, 28, 21, .04) 38%, rgba(15, 28, 21, .62) 100%);
+}
+
+.art-caption {
+    top: auto;
+    bottom: 20px;
+    left: 22px;
+    z-index: 2;
+    color: #fff;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, .22);
+    gap: 5px;
+}
+
+    .art-caption span {
+        font-size: 10px;
+        letter-spacing: .16em;
+    }
+
+    .art-caption b {
+        font-size: 18px;
+    }
+
+.hero-bottom {
+    font-size: 10px;
+    letter-spacing: .12em;
+}
+
+.search-field > span {
+    font-size: 11px;
+    letter-spacing: .08em;
+}
+
+.search-field input,
+.search-field select {
+    font-size: 14px;
+}
+
+.section-head p,
+.page-hero p {
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.room-tools input,
+.room-tools select,
+.panel-filters input,
+.panel-filters select,
+.inline-search input {
+    height: 43px;
+    padding-inline: 13px;
+    font-size: 13px;
+    border-radius: 4px;
+}
+
+.result-count,
+.price-filter {
+    font-size: 13px;
+}
+
+    .price-filter b {
+        font-size: 13px;
+    }
+
+.room-type-tag,
+.floor-tag {
+    font-size: 12px;
+    letter-spacing: .04em;
+}
+
+.room-card {
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+    .room-card h3 {
+        font-size: 21px;
+    }
+
+.room-card-meta {
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.room-card-bottom strong {
+    font-size: 16px;
+}
+
+.room-card-bottom small {
+    font-size: 12px;
+}
+
+.text-button {
+    font-size: 13px;
+}
+
+.room-book-button {
+    padding: 11px 12px;
+}
+
+.pagination,
+.page-button {
+    font-size: 13px;
+}
+
+.experience-list h3 {
+    font-size: 16px;
+}
+
+.experience-list p {
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+.footer-inner p,
+.footer-meta {
+    font-size: 13px;
+}
+
+.brand-footer .brand-word {
+    font-size: 12px;
+}
+
+    .brand-footer .brand-word small {
+        font-size: 9px;
+    }
+
+.detail-content > p,
+.detail-facts {
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+.detail-price span {
+    font-size: 13px;
+}
+
+.toast {
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 4px;
+}
+
+.back-link {
+    font-size: 13px;
+}
+
+.auth-art > p:last-child {
+    font-size: 15px;
+}
+
+.auth-card > .muted {
+    font-size: 14px;
+}
+
+.stack-form label,
+.profile-form label,
+.inline-editor label {
+    font-size: 14px;
+    gap: 7px;
+}
+
+.stack-form input,
+.profile-form input,
+.inline-editor input,
+.inline-editor select {
+    height: 46px;
+    padding-inline: 13px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
+.field-error,
+.validation-summary,
+.auth-switch {
+    font-size: 13px;
+}
+
+.alert {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.booking-id {
+    font-size: 11px;
+    letter-spacing: .1em;
+}
+
+.status-pill {
+    font-size: 12px;
+    letter-spacing: 0;
+}
+
+.booking-facts span {
+    font-size: 12px;
+    letter-spacing: .04em;
+}
+
+.booking-facts b {
+    font-size: 14px;
+}
+
+.booking-payments {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.stat-top {
+    font-size: 13px;
+}
+
+.stat-card > small {
+    font-size: 12px;
+}
+
+.tab {
+    font-size: 13px;
+    padding: 13px 16px;
+}
+
+.panel-head p {
+    font-size: 13px;
+}
+
+.panel-filters input,
+.panel-filters select {
+    height: 43px;
+}
+
+.data-table {
+    font-size: 13px;
+    min-width: 720px;
+}
+
+    .data-table th {
+        padding: 14px 15px;
+        font-size: 11px;
+        letter-spacing: .05em;
+    }
+
+    .data-table td {
+        padding: 14px 15px;
+        line-height: 1.5;
+    }
+
+        .data-table td small {
+            font-size: 12px;
+        }
+
+.room-chip {
+    font-size: 12px;
+    padding: 3px 7px;
+}
+
+.inline-editor {
+    border-radius: 4px;
+    gap: 16px;
+}
+
+.report-box {
+    border-radius: 4px;
+}
+
+.mini-report-list > div {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+    .mini-report-list > div b {
+        font-size: 14px;
+    }
+
+    .mini-report-list > div small {
+        font-size: 12px;
+    }
+
+.empty-page p {
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+@media (max-width: 760px) {
+    .main-nav {
+        gap: 0;
+    }
+
+        .main-nav .nav-link,
+        .nav-user {
+            font-size: 14px;
+        }
+
+    .hero-copy > p {
+        font-size: 15px;
+    }
+
+    .hero-bottom {
+        font-size: 9px;
+        letter-spacing: .08em;
+    }
+
+    .search-field > span {
+        font-size: 10px;
+    }
+
+    .search-field input,
+    .search-field select {
+        font-size: 13px;
+    }
+
+    .room-card-meta {
+        font-size: 12px;
+    }
+
+    .room-card-bottom strong {
+        font-size: 14px;
+    }
+
+    .room-card-bottom .text-button {
+        font-size: 12px;
+    }
+
+    .room-book-button {
+        font-size: 12px;
+    }
+
+    .auth-art > p:last-child {
+        font-size: 14px;
+    }
+
+    .data-table {
+        min-width: 720px;
+    }
+}
+
+@media (max-width: 420px) {
+    .brand-word {
+        font-size: 12px;
+    }
+
+        .brand-word small {
+            font-size: 9px;
+        }
+
+    .room-card-bottom strong {
+        font-size: 15px;
+    }
+
+    .price-filter,
+    .price-filter b,
+    .footer-meta {
+        font-size: 12px;
+    }
+}
+
+
+/* Focus state rõ ràng khi thao tác bằng bàn phím. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #b79656;
+    outline-offset: 2px;
 }
